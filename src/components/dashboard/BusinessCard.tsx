@@ -1,6 +1,6 @@
 import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
 import PayloadViewer from "./PayloadViewer";
+import DispatchButton from "./DispatchButton";
 
 type BusinessCardProps = {
   title: string;
@@ -30,9 +30,7 @@ export default function BusinessCard({
       </div>
 
       <div className="mt-6">
-        <Button>
-          Dispatch Test Payload
-        </Button>
+        <DispatchButton payload={payload} />
       </div>
     </Card>
   );
