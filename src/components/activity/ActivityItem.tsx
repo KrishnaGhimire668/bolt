@@ -20,7 +20,7 @@ export default function ActivityItem({
   };
 
   return (
-    <div className="flex items-start justify-between rounded-xl border border-zinc-800 p-4 transition hover:border-emerald-500/50">
+    <div className="flex flex-col gap-4 rounded-xl border border-zinc-800 p-4 transition hover:border-emerald-500/50 sm:flex-row sm:items-start sm:justify-between">
       <div>
         <h4 className="font-medium text-white">
           {activity.title}
@@ -31,11 +31,9 @@ export default function ActivityItem({
         </p>
       </div>
 
-      <div className="text-right">
+      <div className="text-left sm:text-right">
         <span
-          className={`rounded-full px-3 py-1 text-xs font-medium ${
-            statusStyles[activity.status]
-          }`}
+          className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${statusStyles[activity.status]}`}
         >
           {activity.status}
         </span>
