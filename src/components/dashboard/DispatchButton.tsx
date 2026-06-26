@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -16,10 +17,25 @@ export default function DispatchButton({
     setLoading(true);
 
     try {
-      console.log("Dispatching payload:", payload);
+      const response = await fetch("/api/webhook/transaction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-      // Next step:
-      // POST -> /api/webhook/transaction
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Dispatch failed");
+      }
+
+      alert("Payload dispatched successfully!");
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to dispatch payload.");
     } finally {
       setLoading(false);
     }
