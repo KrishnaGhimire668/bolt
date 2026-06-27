@@ -4,6 +4,7 @@ import ActivityFeed from "@/components/activity/ActivityFeed";
 import { Business } from "@/types/business";
 import QueueStatus from "@/components/queue/QueueStatus";
 import OrdersTable from "@/components/orders/OrdersTable";
+import OrderForm from "../orders/OrderForm";
 
 const businesses: Business[] = [
   {
@@ -50,45 +51,47 @@ const businesses: Business[] = [
 ];
 
 export default function Dashboard() {
-  
-return (
-  <section className="space-y-10">
-    {/* Page Heading */}
-    <div>
-      <h2 className="text-4xl font-bold text-white">
-        Operations Dashboard
-      </h2>
 
-      <p className="mt-2 text-zinc-400">
-        Monitor and manage every business vertical from one operational
-        workspace.
-      </p>
-    </div>
+  return (
+    <section className="space-y-10">
+      {/* Page Heading */}
+      <div>
+        <h2 className="text-4xl font-bold text-white">
+          Operations Dashboard
+        </h2>
 
-    {/* Global Metrics */}
-    <MetricsGrid />
+        <p className="mt-2 text-zinc-400">
+          Monitor and manage every business vertical from one operational
+          workspace.
+        </p>
+      </div>
 
-    {/* Job Queue */}
-    <QueueStatus
-      queued={8}
-      processing={3}
-      completed={124}
-    />
+      {/* Global Metrics */}
+      <MetricsGrid />
 
-    {/* Business Verticals */}
-    <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-      {businesses.map((business) => (
-        <BusinessCard
-          key={business.id}
-          business={business}
-        />
-      ))}
+      {/* Job Queue */}
+      <QueueStatus
+        queued={8}
+        processing={3}
+        completed={124}
+      />
+
+      {/* Business Verticals */}
+      <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {businesses.map((business) => (
+          <BusinessCard
+            key={business.id}
+            business={business}
+          />
+        ))}
+      </section>
+
+      <OrderForm />
+
+      <OrdersTable />
+
+      {/* Recent Activity */}
+      <ActivityFeed />
     </section>
-
-    <OrdersTable />
-
-    {/* Recent Activity */}
-    <ActivityFeed />
-  </section>
-);
+  );
 }

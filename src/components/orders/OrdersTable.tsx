@@ -1,31 +1,10 @@
-const orders = [
-  {
-    id: "BOOK-1001",
-    business: "Physical Books",
-    customer: "Krishna",
-    status: "Completed",
-  },
-  {
-    id: "EBOOK-1002",
-    business: "E-Books",
-    customer: "Aarav",
-    status: "Processing",
-  },
-  {
-    id: "AUDIO-1003",
-    business: "Audiobooks",
-    customer: "Sita",
-    status: "Queued",
-  },
-  {
-    id: "THEATRE-1004",
-    business: "Theatre Tickets",
-    customer: "Ram",
-    status: "Completed",
-  },
-];
+"use client";
+
+import { useDashboard } from "@/context/DashboardContext";
 
 export default function OrdersTable() {
+  const { orders } = useDashboard();
+
   return (
     <section className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 backdrop-blur-xl">
       <h3 className="mb-6 text-xl font-semibold text-white">
