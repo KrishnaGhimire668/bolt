@@ -3,6 +3,7 @@ import BusinessCard from "./BusinessCard";
 import ActivityFeed from "@/components/activity/ActivityFeed";
 import { Business } from "@/types/business";
 import QueueStatus from "@/components/queue/QueueStatus";
+import OrdersTable from "@/components/orders/OrdersTable";
 
 const businesses: Business[] = [
   {
@@ -83,6 +84,8 @@ return (
         />
       ))}
     </section>
+
+    <OrdersTable />
 
     {/* Recent Activity */}
     <ActivityFeed />
