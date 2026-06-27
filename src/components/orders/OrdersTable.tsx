@@ -1,6 +1,7 @@
 "use client";
 
 import { useDashboard } from "@/context/DashboardContext";
+import OrderStatusBadge from "./OrderStatusBadge";
 
 export default function OrdersTable() {
   const { orders } = useDashboard();
@@ -31,7 +32,9 @@ export default function OrdersTable() {
                 <td className="py-4">{order.id}</td>
                 <td>{order.business}</td>
                 <td>{order.customer}</td>
-                <td>{order.status}</td>
+                <td>
+                  <OrderStatusBadge status={order.status} />
+                </td>
               </tr>
             ))}
           </tbody>
