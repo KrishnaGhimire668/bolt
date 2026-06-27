@@ -2,6 +2,7 @@ import MetricsGrid from "@/components/metrics/MetricsGrid";
 import BusinessCard from "./BusinessCard";
 import ActivityFeed from "@/components/activity/ActivityFeed";
 import { Business } from "@/types/business";
+import QueueStatus from "@/components/queue/QueueStatus";
 
 const businesses: Business[] = [
   {
@@ -48,31 +49,43 @@ const businesses: Business[] = [
 ];
 
 export default function Dashboard() {
-  return (
-    <section className="space-y-10">
-      <div>
-        <h2 className="text-4xl font-bold text-white">
-          Operations Dashboard
-        </h2>
+  
+return (
+  <section className="space-y-10">
+    {/* Page Heading */}
+    <div>
+      <h2 className="text-4xl font-bold text-white">
+        Operations Dashboard
+      </h2>
 
-        <p className="mt-2 text-zinc-400">
-          Monitor and manage every business vertical from one operational
-          workspace.
-        </p>
-      </div>
+      <p className="mt-2 text-zinc-400">
+        Monitor and manage every business vertical from one operational
+        workspace.
+      </p>
+    </div>
 
-      <MetricsGrid />
+    {/* Global Metrics */}
+    <MetricsGrid />
 
-      <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {businesses.map((business) => (
-          <BusinessCard
-            key={business.id}
-            business={business}
-          />
-        ))}
-      </section>
+    {/* Job Queue */}
+    <QueueStatus
+      queued={8}
+      processing={3}
+      completed={124}
+    />
 
-      <ActivityFeed />
+    {/* Business Verticals */}
+    <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {businesses.map((business) => (
+        <BusinessCard
+          key={business.id}
+          business={business}
+        />
+      ))}
     </section>
-  );
+
+    {/* Recent Activity */}
+    <ActivityFeed />
+  </section>
+);
 }
