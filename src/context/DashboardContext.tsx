@@ -7,17 +7,9 @@ import {
   ReactNode,
 } from "react";
 
-export type DashboardSection =
-  | "dashboard"
-  | "physical"
-  | "ebook"
-  | "audio"
-  | "theatre"
-  | "settings";
-
 type DashboardContextType = {
-  section: DashboardSection;
-  setSection: (section: DashboardSection) => void;
+  activePage: string;
+  setActivePage: (page: string) => void;
 };
 
 const DashboardContext = createContext<
@@ -29,14 +21,14 @@ export function DashboardProvider({
 }: {
   children: ReactNode;
 }) {
-  const [section, setSection] =
-    useState<DashboardSection>("dashboard");
+  const [activePage, setActivePage] =
+    useState("dashboard");
 
   return (
     <DashboardContext.Provider
       value={{
-        section,
-        setSection,
+        activePage,
+        setActivePage,
       }}
     >
       {children}
@@ -49,7 +41,7 @@ export function useDashboard() {
 
   if (!context) {
     throw new Error(
-      "useDashboard must be used inside DashboardProvider."
+      "useDashboard must be used inside DashboardProvider"
     );
   }
 
